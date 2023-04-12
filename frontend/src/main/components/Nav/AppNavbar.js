@@ -7,7 +7,7 @@ export default function AppNavbar() {
       <Navbar expand="xl" variant="dark" bg="dark" sticky="top" data-testid="AppNavbar">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            Example
+            Demo React Example
           </Navbar.Brand>
 
           <Navbar.Toggle />
@@ -19,12 +19,9 @@ export default function AppNavbar() {
           <Navbar.Collapse>
             {/* This `nav` component contains all navigation items that show up on the left side */}
             <Nav className="me-auto">
-              <NavDropdown title="Menu 1" id="appnavbar-menu1" data-testid="appnavbar-menu1" >
-                <NavDropdown.Item as={Link} to="/menu1/optionA">Option A</NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Menu 2" id="appnavbar-menu2" data-testid="appnavbar-menu2" >
-                <NavDropdown.Item as={Link} to="/menu2/optionA">Option A</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/menu2/optionB">Option B</NavDropdown.Item>
+              <NavDropdown title="Towns" id="appnavbar-towns" data-testid="appnavbar-towns" >
+                <NavDropdown.Item as={Link} to="/towns/AvilaBeach">Avila Beach</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/towns/AvilaBeach">Los Alamos</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

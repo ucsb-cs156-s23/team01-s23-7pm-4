@@ -11,6 +11,8 @@ function App() {
     <BrowserRouter basename="/demo-react-example">
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/AvilaBeach" element={<AvilaBeachPage />} />
+        <Route exact path="/LosAlamos" element={<LosAlamosPage />} />
       </Routes>
     </BrowserRouter>
   );
