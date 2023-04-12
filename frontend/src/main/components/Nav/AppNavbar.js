@@ -1,7 +1,7 @@
-import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-export default function AppNavbar({ currentUrl = window.location.href }) {
+export default function AppNavbar() {
   return (
     <>
       <Navbar expand="xl" variant="dark" bg="dark" sticky="top" data-testid="AppNavbar">
