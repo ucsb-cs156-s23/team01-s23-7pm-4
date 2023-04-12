@@ -35,6 +35,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: ./frontend/build # The folder the action should deploy.
+        branch: gh-pages
 
 
     # - name: Upload production-ready build files
