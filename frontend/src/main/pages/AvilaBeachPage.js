@@ -6,7 +6,7 @@ export default function AvilaBeachPage() {
       <div className="pt-2">
         <h1>Avila Beach, CA</h1>
         <p>
-         Avila Beach, California is a small town in San Luis Obispo county.
+         <b>>Avila Beach, California</b> is a small town in San Luis Obispo county.
          It is a popular beach destination because it is in a small secluded cove.
          The nearby Port San Luis was once the main port for the San Luis Obispo
          area at the time the main way that
