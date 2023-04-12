@@ -11,6 +11,7 @@ export default function LosAlamosPage() {
          Santa Barbara and San Luis Obpiso.  It is known for its collection
          of restaurants.
         </p>
+        <p>Added by Phill C.</p>
       </div>
     </BasicLayout>
   )

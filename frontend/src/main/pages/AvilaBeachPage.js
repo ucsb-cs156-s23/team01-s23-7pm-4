@@ -13,6 +13,7 @@ export default function AvilaBeachPage() {
          goods were transported was by boat.  The main entrance to the
          Diablo Canyon nuclear power plant is located just outside Avila Beach.
         </p>
+        <p>Added by Phill C.</p>
       </div>
     </BasicLayout>
   )

@@ -21,7 +21,7 @@ export default function AppNavbar() {
             <Nav className="me-auto">
               <NavDropdown title="Towns" id="appnavbar-towns" data-testid="appnavbar-towns" >
                 <NavDropdown.Item as={Link} to="/towns/AvilaBeach">Avila Beach</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/towns/AvilaBeach">Los Alamos</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/towns/LosAlamos">Los Alamos</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
