@@ -6,7 +6,7 @@ export default function ArroyoGrandePage() {
       <div className="pt-2">
         <h1>Arroyo Grande, CA</h1>
         <p>
-         Arroyo Grande, California is a town in San Luis Obispo county, to
+         <b>Arroyo Grande, California</b> is a town in San Luis Obispo county, to
          the southeast of San Luis Obispo.
          The central business district is called the "Village", and is 
          adjacent to a park, where feral chickens roam.
