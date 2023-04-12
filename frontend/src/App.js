@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/demo-react-example">
       <Routes>
         <Route exact path="/" element={<HomePage />} />
       </Routes>
