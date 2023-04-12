@@ -20,6 +20,7 @@ export default function AppNavbar() {
             {/* This `nav` component contains all navigation items that show up on the left side */}
             <Nav className="me-auto">
               <NavDropdown title="Towns" id="appnavbar-towns" data-testid="appnavbar-towns" >
+                <NavDropdown.Item as={Link} to="/towns/ArroyoGrande">Arroyo Grande</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/towns/AvilaBeach">Avila Beach</NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/towns/LosAlamos">Los Alamos</NavDropdown.Item>
               </NavDropdown>
