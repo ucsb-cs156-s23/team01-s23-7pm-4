@@ -1,6 +1,7 @@
 name: 010_gh_pages_deploy_frontend
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
