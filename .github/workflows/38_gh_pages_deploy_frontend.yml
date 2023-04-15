@@ -1,4 +1,4 @@
-name: 010_gh_pages_deploy_frontend
+name: 38_gh_pages_deploy_frontend
 
 on:
   workflow_dispatch:
