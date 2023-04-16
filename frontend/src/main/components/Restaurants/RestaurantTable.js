@@ -2,12 +2,14 @@ import React from "react";
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 import { useNavigate } from "react-router-dom";
 
+
+const showCell = (cell) => JSON.stringify(cell.row.values);
+
 export default function RestaurantTable({ restaurants, showButtons=true }) {
     const navigate = useNavigate();
 
     const testIdPrefix = "RestaurantTable";
 
-    const showCell = (cell) => JSON.stringify(cell.row.values);
 
     const editCallback = (cell) => {
         console.log(`editCallback: ${showCell(cell)})`);
@@ -54,3 +56,5 @@ export default function RestaurantTable({ restaurants, showButtons=true }) {
         testid={testIdPrefix}
     />;
 };
+
+export { showCell };
