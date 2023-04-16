@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import AvilaBeachPage from "main/pages/AvilaBeachPage";
+import AvilaBeachPage from "main/pages/Towns/AvilaBeachPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 

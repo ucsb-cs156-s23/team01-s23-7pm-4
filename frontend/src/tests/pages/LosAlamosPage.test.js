@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import LosAlamosPage from "main/pages/LosAlamosPage";
+import LosAlamosPage from "main/pages/Towns/LosAlamosPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
