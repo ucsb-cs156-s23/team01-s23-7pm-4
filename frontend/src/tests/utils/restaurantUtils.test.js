@@ -109,7 +109,6 @@ describe("restaurantUtils tests", () => {
                 threeRestaurants[1],
                 threeRestaurants[2]
             ];
-            const threeRestaurantsUpdatedJSON = JSON.stringify(threeRestaurantsUpdated);
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
             getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
@@ -162,7 +161,6 @@ describe("restaurantUtils tests", () => {
                 threeRestaurants[0],
                 threeRestaurants[2]
             ];
-            const threeRestaurantsUpdatedJSON = JSON.stringify(threeRestaurantsUpdated);
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
             getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
