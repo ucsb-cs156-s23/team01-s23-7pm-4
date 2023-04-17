@@ -27,15 +27,18 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.get();
 
             // assert
-            expect(result).toEqual({restaurants: []});
-            expect(setItemSpy).toHaveBeenCalledWith("restaurants","[]");
+            const expected = {restaurantCollection: {nextId: 1, restaurants: []}};
+            expect(result).toEqual(expected);
+
+            const expectedJSON = JSON.stringify(expected.restaurantCollection);
+            expect(setItemSpy).toHaveBeenCalledWith("restaurants",expectedJSON);
         });
 
         test("When restaurants is [] in local storage, should return []", () => {
 
             // arrange
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock([]));
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 1, restaurants: []}));
             
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -44,7 +47,9 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.get();
 
             // assert
-            expect(result).toEqual({restaurants: []});
+            const expected = {nextId: 1, restaurants: []};
+            expect(result).toEqual(expected);
+
             expect(setItemSpy).not.toHaveBeenCalled();
         });
 
@@ -52,9 +57,10 @@ describe("restaurantUtils tests", () => {
 
             // arrange
             const threeRestaurants = restaurantFixtures.threeRestaurants;
+            const mockRestaurantCollection = {nextId: 10, restaurants: threeRestaurants};
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(threeRestaurants));
+            getItemSpy.mockImplementation(createGetItemMock(mockRestaurantCollection));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -63,7 +69,7 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.get();
 
             // assert
-            expect(result).toEqual({restaurants: threeRestaurants});
+            expect(result).toEqual(mockRestaurantCollection);
             expect(setItemSpy).not.toHaveBeenCalled();
         });
     });
@@ -74,8 +80,7 @@ describe("restaurantUtils tests", () => {
             // arrange
             const restaurant = restaurantFixtures.oneRestaurant[0];
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');            
-            getItemSpy.mockImplementation(createGetItemMock([]));
-
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 1, restaurants: []}));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -84,9 +89,9 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.add(restaurant);
 
             // assert
-            expect(result).toEqual({restaurants: restaurantFixtures.oneRestaurant});
+            expect(result).toEqual({restaurantCollection: {nextId: 2, restaurants: restaurantFixtures.oneRestaurant}});
             expect(setItemSpy).toHaveBeenCalledWith("restaurants",
-                JSON.stringify(restaurantFixtures.oneRestaurant));
+                JSON.stringify({nextId: 2, restaurants: restaurantFixtures.oneRestaurant}));
         });
     });
 
@@ -107,7 +112,7 @@ describe("restaurantUtils tests", () => {
             const threeRestaurantsUpdatedJSON = JSON.stringify(threeRestaurantsUpdated);
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(threeRestaurants));
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -116,9 +121,9 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.update(updatedRestaurant);
 
             // assert
-            expect(result).toEqual({restaurants: threeRestaurantsUpdated});
-            expect(setItemSpy).toHaveBeenCalledWith("restaurants",
-            threeRestaurantsUpdatedJSON);
+            const expected = {restaurantCollection: {nextId: 5, restaurants: threeRestaurantsUpdated}};
+            expect(result).toEqual(expected);
+            expect(setItemSpy).toHaveBeenCalledWith("restaurants", JSON.stringify(expected.restaurantCollection));
         });
         test("Check that updating an non-existing restaurant returns an error", () => {
 
@@ -126,7 +131,7 @@ describe("restaurantUtils tests", () => {
             const threeRestaurants = restaurantFixtures.threeRestaurants;
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(threeRestaurants));
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -160,8 +165,7 @@ describe("restaurantUtils tests", () => {
             const threeRestaurantsUpdatedJSON = JSON.stringify(threeRestaurantsUpdated);
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(threeRestaurants));
-
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
@@ -170,9 +174,10 @@ describe("restaurantUtils tests", () => {
             const result = restaurantUtils.del(idToDelete);
 
             // assert
-            expect(result).toEqual({restaurants: threeRestaurantsUpdated});
-            expect(setItemSpy).toHaveBeenCalledWith("restaurants",
-            threeRestaurantsUpdatedJSON);
+
+            const expected = {restaurantCollection: {nextId: 5, restaurants: threeRestaurantsUpdated}};
+            expect(result).toEqual(expected);
+            expect(setItemSpy).toHaveBeenCalledWith("restaurants", JSON.stringify(expected.restaurantCollection));
         });
         test("Check that deleting a non-existing restaurant returns an error", () => {
 
@@ -180,7 +185,7 @@ describe("restaurantUtils tests", () => {
             const threeRestaurants = restaurantFixtures.threeRestaurants;
             
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(threeRestaurants));
+            getItemSpy.mockImplementation(createGetItemMock({nextId: 5, restaurants: threeRestaurants}));
             
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key,_value) => null);
