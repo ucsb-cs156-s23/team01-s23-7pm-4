@@ -29,7 +29,7 @@ const update = (restaurant) => {
     const restaurantCollection = get();
     const restaurants = restaurantCollection.restaurants;
     const index = restaurants.findIndex((r) => r.id === restaurant.id);
-    if (index==-1) {
+    if (index===-1) {
         return { "error" : `restaurant with id ${restaurant.id} not found`};
     }
     restaurants[index] = restaurant;
@@ -42,7 +42,7 @@ const del = (id) => {
     const restaurantCollection = get();
     const restaurants = restaurantCollection.restaurants;
     const index = restaurants.findIndex((r) => r.id === id);
-    if (index==-1) {
+    if (index===-1) {
         return { "error" : `restaurant with id ${id} not found`};
     }
     restaurants.splice(index, 1); 
