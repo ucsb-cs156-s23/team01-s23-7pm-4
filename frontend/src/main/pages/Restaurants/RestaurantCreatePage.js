@@ -1,15 +1,18 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import RestaurantForm from "main/components/Restaurants/RestaurantForm";
-import { _Navigate } from 'react-router-dom'
-import { toast } from "react-toastify";
-import { _restaurantUtils } from "main/utils/restaurantUtils";
+import { useNavigate } from 'react-router-dom'
+import { restaurantUtils } from 'main/utils/restaurantUtils';
 
 export default function RestaurantCreatePage() {
 
+  let navigate = useNavigate(); 
+
   const onSubmit = async (restaurant) => {
     console.log(`onSubmit: ${JSON.stringify(restaurant)}`);
-    toast(`New restaurant Created - id: ${restaurant.id} name: ${restaurant.name}`);
-  }
+    const createdRestaurant = restaurantUtils.add(restaurant);
+    console.log(`createdRestaurant: ${JSON.stringify(createdRestaurant)}`);
+    navigate("/restaurants");
+  }  
 
   // return <Navigate to="/personalschedules/list" />
   // toast(`Error: ${error.response.data.message}`);

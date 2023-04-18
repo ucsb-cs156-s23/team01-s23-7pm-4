@@ -1,17 +1,39 @@
 // get restaurants from local storage
 const get = () => {
-    const restaurantCollection = JSON.parse(localStorage.getItem("restaurants"));
-    if (restaurantCollection==null) {
+    const restaurantValue = localStorage.getItem("restaurants");
+    console.log("restaurantValue=", restaurantValue);
+    if (restaurantValue===undefined) {
+        const restaurantCollection = {nextId: 1, restaurants: []}
+        return set(restaurantCollection);
+    }
+    const restaurantCollection = JSON.parse(restaurantValue);
+    if (restaurantCollection===null) {
        const restaurantCollection = {nextId: 1, restaurants: []}
        return set(restaurantCollection);
     }
     return restaurantCollection ;
 };
 
+const getById = (id) => {
+    if (id === undefined) {
+        return { "error" : "id is a required parameter"};
+    }
+    const restaurantCollection = get();
+    const restaurants = restaurantCollection.restaurants;
+    console.log("in getById, restaurants=", restaurants);
+    console.log("in getById, id=", id);
+    const index = restaurants.findIndex((r) => r.id == id);
+    console.log("in getById, index=", index);
+    if (index===-1) {
+        return { "error" : `restaurant with id ${id} not found`};
+    }
+    return {restaurant: restaurants[index]};
+}
+
 // set restaurants in local storage
 const set = (restaurantCollection) => {
     localStorage.setItem("restaurants", JSON.stringify(restaurantCollection));
-    return { restaurantCollection: restaurantCollection };
+    return restaurantCollection ;
 };
 
 // add a restaurant to local storage
@@ -21,14 +43,15 @@ const add = (restaurant) => {
     restaurantCollection.nextId++;
     restaurantCollection.restaurants.push(restaurant);
     set(restaurantCollection);
-    return { restaurantCollection: restaurantCollection };
+    return restaurant;
 };
 
 // update a restaurant in local storage
 const update = (restaurant) => {
     const restaurantCollection = get();
+
     const restaurants = restaurantCollection.restaurants;
-    const index = restaurants.findIndex((r) => r.id === restaurant.id);
+    const index = restaurants.findIndex((r) => r.id == restaurant.id);
     if (index===-1) {
         return { "error" : `restaurant with id ${restaurant.id} not found`};
     }
@@ -39,9 +62,12 @@ const update = (restaurant) => {
 
 // delete a restaurant from local storage
 const del = (id) => {
+    if (id === undefined) {
+        return { "error" : "id is a required parameter"};
+    }
     const restaurantCollection = get();
     const restaurants = restaurantCollection.restaurants;
-    const index = restaurants.findIndex((r) => r.id === id);
+    const index = restaurants.findIndex((r) => r.id == id);
     if (index===-1) {
         return { "error" : `restaurant with id ${id} not found`};
     }
@@ -52,11 +78,13 @@ const del = (id) => {
 
 const restaurantUtils = {
     get,
+    getById,
     add,
     update,
     del
 };
-export default restaurantUtils;
+
+export { restaurantUtils } ;
 
 
 

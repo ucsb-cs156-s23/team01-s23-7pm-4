@@ -6,6 +6,10 @@ import ArroyoGrandePage from "main/pages/Towns/ArroyoGrandePage";
 
 import "bootstrap/dist/css/bootstrap.css";
 import RestaurantCreatePage from "main/pages/Restaurants/RestaurantCreatePage";
+import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
+import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
+import RestaurantDetailsPage from "main/pages/Restaurants/RestaurantDetailsPage";
+
 
 function App() {
 
@@ -13,10 +17,15 @@ function App() {
     <BrowserRouter basename="/STARTER-team01">
       <Routes>
         <Route exact path="/" element={<HomePage />} />
+
         <Route exact path="/towns/AvilaBeach" element={<AvilaBeachPage />} />
         <Route exact path="/towns/LosAlamos" element={<LosAlamosPage />} />
         <Route exact path="/towns/ArroyoGrande" element={<ArroyoGrandePage />} />
-        <Route exact path="/restaurant/create" element={<RestaurantCreatePage />} />
+        
+        <Route exact path="/restaurants/create" element={<RestaurantCreatePage />} />
+        <Route exact path="/restaurants/edit/:id" element={<RestaurantEditPage />} />
+        <Route exact path="/restaurants/details/:id" element={<RestaurantDetailsPage />} />
+        <Route exact path="/restaurants/" element={<RestaurantIndexPage />} />
 
       </Routes>
     </BrowserRouter>

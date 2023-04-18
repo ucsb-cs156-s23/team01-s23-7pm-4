@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom';
 
 function RestaurantForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
+
+    console.log("initialContents=", initialContents);
+
     const navigate = useNavigate();
     
     // Stryker disable all
