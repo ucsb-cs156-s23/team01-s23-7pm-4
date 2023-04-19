@@ -3,7 +3,6 @@ import RestaurantIndexPage from "main/pages/Restaurants/RestaurantIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import mockConsole from "jest-mock-console";
-import { create } from "react-test-renderer";
 
 const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({

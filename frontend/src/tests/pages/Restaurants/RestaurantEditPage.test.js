@@ -19,8 +19,8 @@ jest.mock('main/utils/restaurantUtils', () => {
     return {
         __esModule: true,
         restaurantUtils: {
-            update: () => {return mockUpdate();},
-            getById: (id) => {
+            update: (_restaurant) => {return mockUpdate();},
+            getById: (_id) => {
                 return {
                     restaurant: {
                         id: 3,
