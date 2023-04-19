@@ -1,5 +1,4 @@
-name: 38_gh_pages_deploy_frontend
-
+name: "38-gh-pages-deploy-frontend — Deploy to GitHub Pages"
 on:
   workflow_dispatch:
   push:
