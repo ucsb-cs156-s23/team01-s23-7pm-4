@@ -9,10 +9,12 @@ import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
 
+  const reload = () => window.location.reload();
+
   return (
     <BrowserRouter basename="/STARTER-team01">
       <Routes>
-        <Route exact path="/storybook-static" />
+        <Route path="/storybook-static" onEnter={reload}/>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/towns/AvilaBeach" element={<AvilaBeachPage />} />
         <Route exact path="/towns/LosAlamos" element={<LosAlamosPage />} />
