@@ -13,9 +13,6 @@ export default function RestaurantCreatePage() {
     navigate("/restaurants");
   }  
 
-  // return <Navigate to="/personalschedules/list" />
-  // toast(`Error: ${error.response.data.message}`);
-
   return (
     <BasicLayout>
       <div className="pt-2">

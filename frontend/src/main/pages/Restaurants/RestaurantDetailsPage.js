@@ -12,14 +12,7 @@ export default function RestaurantDetailsPage() {
     <BasicLayout>
       <div className="pt-2">
         <h1>Restaurant Details</h1>
-        {
-          // (response?.error) ?
-          //     <p>
-          //         {response.error}
-          //     </p>
-          //     :
-          <RestaurantTable restaurants={[response.restaurant]} showButtons={false} />
-        }
+        <RestaurantTable restaurants={[response.restaurant]} showButtons={false} />
       </div>
     </BasicLayout>
   )

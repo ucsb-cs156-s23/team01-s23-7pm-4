@@ -23,16 +23,7 @@ export default function RestaurantEditPage() {
         <BasicLayout>
             <div className="pt-2">
                 <h1>Edit Restaurant</h1>
-                {
-                    // (response?.error) ?
-                    //     <p>
-                    //         {response.error}
-                    //     </p>
-                    //     :
-
-                    <RestaurantForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={response.restaurant}/>
-
-                }
+                <RestaurantForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={response.restaurant}/>
             </div>
         </BasicLayout>
     )
