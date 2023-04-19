@@ -35,7 +35,7 @@ jobs:
       run: | # Install npm packages and build the Storybook files
         mkdir -p docs-build
         npx build-storybook --docs 
-        mv storybook-static build/static
+        mv storybook-static build
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
