@@ -26,7 +26,7 @@ jest.mock('main/utils/restaurantUtils', () => {
                             "id": 3,
                             "name": "Freebirds",
                             "address": "879 Embarcadero del Norte",
-                            "town": "Isla Vista",
+                            "city": "Isla Vista",
                             "state": "CA",
                             "zip": "93117",
                             "description": "Burrito joint, and iconic Isla Vista location"
