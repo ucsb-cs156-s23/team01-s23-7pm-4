@@ -29,6 +29,7 @@ jobs:
     - name: Build Storybook
       working-directory: ./frontend
       run: | # Install npm packages and build the Storybook files
+        echo "foo" >> public/foo.txt
         mkdir -p docs-build
         npx build-storybook --docs 
         mv storybook-static public
