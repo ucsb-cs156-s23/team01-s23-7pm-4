@@ -31,11 +31,11 @@ jobs:
       working-directory: ./frontend
 
     - name: Build Storybook
-        working-directory: ./frontend
-        run: | # Install npm packages and build the Storybook files
-          mkdir -p docs-build
-          npm run build-storybook
-          mv docs-build build/docs
+      working-directory: ./frontend
+      run: | # Install npm packages and build the Storybook files
+        mkdir -p docs-build
+        npm run build-storybook
+        mv docs-build build/docs
 
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4
