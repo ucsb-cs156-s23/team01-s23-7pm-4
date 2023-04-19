@@ -18,7 +18,7 @@ describe("AppNavbar tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => expect(getByText("Example")).toBeInTheDocument());
+        await waitFor(() => expect(getByText("Demo React Example")).toBeInTheDocument());
     });
 
 });
