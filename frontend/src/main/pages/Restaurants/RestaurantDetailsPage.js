@@ -5,10 +5,8 @@ import { restaurantUtils } from 'main/utils/restaurantUtils';
 
 export default function RestaurantDetailsPage() {
   let { id } = useParams();
-  console.log("id=", id);
 
   const response = restaurantUtils.getById(id);
-  console.log("response=", response);
 
   return (
     <BasicLayout>

@@ -8,17 +8,14 @@ import { useNavigate } from 'react-router-dom'
 
 export default function RestaurantEditPage() {
     let { id } = useParams();
-    console.log("id=", id);
 
     let navigate = useNavigate(); 
 
     const response = restaurantUtils.getById(id);
-    console.log("response=", response);
 
     const onSubmit = async (restaurant) => {
-        console.log(`RestaurantEditPage, onSubmit: ${JSON.stringify(restaurant)}`);
-        const result = restaurantUtils.update(restaurant);
-        console.log(`RestaurantEditPage result: ${JSON.stringify(result)}`);
+        const updatedRestaurant = restaurantUtils.update(restaurant);
+        console.log("updatedRestaurant: " + JSON.stringify(updatedRestaurant));
         navigate("/restaurants");
     }  
 
@@ -33,7 +30,7 @@ export default function RestaurantEditPage() {
                     //     </p>
                     //     :
 
-                    <RestaurantForm submitAction={onSubmit} initialContents={response.restaurant}/>
+                    <RestaurantForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={response.restaurant}/>
 
                 }
             </div>

@@ -1,20 +1,16 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import RestaurantDetailsPage from "main/pages/Restaurants/RestaurantDetailsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
 const mockNavigate = jest.fn();
-jest.mock('react-router-dom', () => {
-    const originalModule = jest.requireActual('react-router-dom');
-    return {
-        __esModule: true,
-        ...originalModule,
-        useParams: () => ({
-            id: 3
-        }),
-        Navigate: (x) => { mockNavigate(x); return null; }
-    };
-});
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({
+        id: 3
+    }),
+    useNavigate: () => mockNavigate
+}));
 
 jest.mock('main/utils/restaurantUtils', () => {
     return {
@@ -44,6 +40,22 @@ describe("RestaurantDetailsPage tests", () => {
                 </MemoryRouter>
             </QueryClientProvider>
         );
+    });
+
+    test("loads the correct fields, and no buttons", async () => {
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RestaurantDetailsPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+        expect(screen.getByText("Freebirds")).toBeInTheDocument();
+        expect(screen.getByText("Burritos")).toBeInTheDocument();
+
+        expect(screen.queryByText("Delete")).not.toBeInTheDocument();
+        expect(screen.queryByText("Edit")).not.toBeInTheDocument();
+        expect(screen.queryByText("Details")).not.toBeInTheDocument();
     });
 
 });

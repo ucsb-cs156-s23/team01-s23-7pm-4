@@ -8,9 +8,8 @@ export default function RestaurantCreatePage() {
   let navigate = useNavigate(); 
 
   const onSubmit = async (restaurant) => {
-    console.log(`onSubmit: ${JSON.stringify(restaurant)}`);
     const createdRestaurant = restaurantUtils.add(restaurant);
-    console.log(`createdRestaurant: ${JSON.stringify(createdRestaurant)}`);
+    console.log("createdRestaurant: " + JSON.stringify(createdRestaurant));
     navigate("/restaurants");
   }  
 
