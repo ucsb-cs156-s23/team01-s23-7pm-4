@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/STARTER-team01/static/css/main.a7128f6f.css",
-    "main.js": "/STARTER-team01/static/js/main.25566685.js",
-    "static/js/651.b29a0ead.chunk.js": "/STARTER-team01/static/js/651.b29a0ead.chunk.js",
-    "index.html": "/STARTER-team01/index.html",
-    "main.a7128f6f.css.map": "/STARTER-team01/static/css/main.a7128f6f.css.map",
-    "main.25566685.js.map": "/STARTER-team01/static/js/main.25566685.js.map",
-    "651.b29a0ead.chunk.js.map": "/STARTER-team01/static/js/651.b29a0ead.chunk.js.map"
+    "main.css": "/ucsb-cs156-s23/team01-s23-7pm-4/static/css/main.a7128f6f.css",
+    "main.js": "/ucsb-cs156-s23/team01-s23-7pm-4/static/js/main.9bad385f.js",
+    "static/js/651.b29a0ead.chunk.js": "/ucsb-cs156-s23/team01-s23-7pm-4/static/js/651.b29a0ead.chunk.js",
+    "index.html": "/ucsb-cs156-s23/team01-s23-7pm-4/index.html",
+    "main.a7128f6f.css.map": "/ucsb-cs156-s23/team01-s23-7pm-4/static/css/main.a7128f6f.css.map",
+    "main.9bad385f.js.map": "/ucsb-cs156-s23/team01-s23-7pm-4/static/js/main.9bad385f.js.map",
+    "651.b29a0ead.chunk.js.map": "/ucsb-cs156-s23/team01-s23-7pm-4/static/js/651.b29a0ead.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a7128f6f.css",
-    "static/js/main.25566685.js"
+    "static/js/main.9bad385f.js"
   ]
 }
