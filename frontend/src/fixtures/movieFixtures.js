@@ -21,7 +21,7 @@ const movieFixtures = {
         {
             "id": 3,
              "name": "High School Musical",
-             "address": "2006",
+             "year": "2006",
              "city": "Basketball player Troy and smart student Gabriella join their school musical", 
         },
 
