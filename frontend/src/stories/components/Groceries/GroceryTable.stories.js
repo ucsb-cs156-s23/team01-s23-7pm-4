@@ -22,12 +22,12 @@ Empty.args = {
 export const ThreeSubjectsNoButtons = Template.bind({});
 
 ThreeSubjectsNoButtons.args = {
-    groceries: restaurantFixtures.threeGroceries,
+    groceries: groceryFixtures.threeGroceries,
     showButtons: false
 };
 
 export const ThreeSubjectsWithButtons = Template.bind({});
 ThreeSubjectsWithButtons.args = {
-    groceries: restaurantFixtures.threeGroceries,
+    groceries: groceryFixtures.threeGroceries,
     showButtons: true
 };
