@@ -15,8 +15,8 @@ jest.mock('react-router-dom', () => ({
 describe("GroceryTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["id", "Name", "Description"];
-  const expectedFields = ["id", "name", "description"];
+  const expectedHeaders = ["id", "Name", "Price", "Expiration"];
+  const expectedFields = ["id", "name", "price", "expiration"];
   const testId = "GroceryTable";
 
   test("showCell function works properly", () => {
@@ -141,7 +141,7 @@ describe("GroceryTable tests", () => {
     // assert - check that the console.log was called with the expected message
     expect(console.log).toHaveBeenCalled();
     const message = console.log.mock.calls[0][0];
-    const expectedMessage = `editCallback: {"id":2,"name":"Banana"})`;
+    const expectedMessage = `editCallback: {"id":2,"name":"Banana","price":"0.19","expiration":"05/10/23"})`;
     expect(message).toMatch(expectedMessage);
     restoreConsole();
   });
@@ -175,7 +175,7 @@ describe("GroceryTable tests", () => {
     // assert - check that the console.log was called with the expected message
     expect(console.log).toHaveBeenCalled();
     const message = console.log.mock.calls[0][0];
-    const expectedMessage = `detailsCallback: {"id":2,"name":"Banana"})`;
+    const expectedMessage = `detailsCallback: {"id":2,"name":"Banana","price":"0.19","expiration":"05/10/23"})`;
     expect(message).toMatch(expectedMessage);
     restoreConsole();
   });
@@ -206,7 +206,7 @@ describe("GroceryTable tests", () => {
      // assert - check that the console.log was called with the expected message
      await(waitFor(() => expect(console.log).toHaveBeenCalled()));
      const message = console.log.mock.calls[0][0];
-     const expectedMessage = `deleteCallback: {"id":2,"name":"Banana"})`;
+     const expectedMessage = `deleteCallback: {"id":2,"name":"Banana","price":"0.19","expiration":"05/10/23"})`;
      expect(message).toMatch(expectedMessage);
      restoreConsole();
   });

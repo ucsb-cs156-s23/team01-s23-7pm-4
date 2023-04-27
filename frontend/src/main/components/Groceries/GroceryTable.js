@@ -40,8 +40,12 @@ export default function GroceryTable({
             accessor: 'name',
         },
         {
-            Header: 'Description',
-            accessor: 'description',
+            Header: 'Price',
+            accessor: 'price',
+        },
+        {
+            Header: 'Expiration',
+            accessor: 'expiration',
         }
     ];
 
