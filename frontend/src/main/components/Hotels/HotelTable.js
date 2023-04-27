@@ -40,6 +40,11 @@ export default function HotelTable({
             accessor: 'name',
         },
         {
+            Header: 'Address',
+            accessor: 'address',
+        },
+
+        {
             Header: 'Description',
             accessor: 'description',
         }
