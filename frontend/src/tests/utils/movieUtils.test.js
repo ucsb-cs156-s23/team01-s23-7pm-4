@@ -77,11 +77,11 @@ describe("movieUtils tests", () => {
         test("When movies is JSON of three movies, should return that JSON", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
-            const mockmovieCollection = { nextId: 10, movies: threemovies };
+            const threeMovies = movieFixtures.threeMovies;
+            const mockMovieCollection = { nextId: 10, movies: threeMovies };
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock(mockmovieCollection));
+            getItemSpy.mockImplementation(createGetItemMock(mockMovieCollection));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key, _value) => null);
@@ -90,7 +90,7 @@ describe("movieUtils tests", () => {
             const result = movieUtils.get();
 
             // assert
-            expect(result).toEqual(mockmovieCollection);
+            expect(result).toEqual(mockMovieCollection);
             expect(setItemSpy).not.toHaveBeenCalled();
         });
     });
@@ -100,28 +100,28 @@ describe("movieUtils tests", () => {
         test("Check that getting a movie by id works", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
-            const idToGet = threemovies[1].id;
+            const threeMovies = movieFixtures.threeMovies;
+            const idToGet = threeMovies[1].id;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             // act
             const result = movieUtils.getById(idToGet);
 
             // assert
 
-            const expected = { movie: threemovies[1] };
+            const expected = { movie: threeMovies[1] };
             expect(result).toEqual(expected);
         });
 
         test("Check that getting a non-existing movie returns an error", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
+            const threeMovies = movieFixtures.threeMovies;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             // act
             const result = movieUtils.getById(99);
@@ -134,10 +134,10 @@ describe("movieUtils tests", () => {
         test("Check that an error is returned when id not passed", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
+            const threeMovies = movieFixtures.threeMovies;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             // act
             const result = movieUtils.getById();
@@ -152,7 +152,7 @@ describe("movieUtils tests", () => {
         test("Starting from [], check that adding one movie works", () => {
 
             // arrange
-            const movie = movieFixtures.onemovie[0];
+            const movie = movieFixtures.oneMovie[0];
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
             getItemSpy.mockImplementation(createGetItemMock({ nextId: 1, movies: [] }));
 
@@ -165,7 +165,7 @@ describe("movieUtils tests", () => {
             // assert
             expect(result).toEqual(movie);
             expect(setItemSpy).toHaveBeenCalledWith("movies",
-                JSON.stringify({ nextId: 2, movies: movieFixtures.onemovie }));
+                JSON.stringify({ nextId: 2, movies: movieFixtures.oneMovie }));
         });
     });
 
@@ -173,50 +173,50 @@ describe("movieUtils tests", () => {
         test("Check that updating an existing movie works", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
-            const updatedmovie = {
-                ...threemovies[0],
+            const threeMovies = movieFixtures.threeMovies;
+            const updatedMovie = {
+                ...threeMovies[0],
                 name: "Updated Name"
             };
-            const threemoviesUpdated = [
-                updatedmovie,
-                threemovies[1],
-                threemovies[2]
+            const threeMoviesUpdated = [
+                updatedMovie,
+                threeMovies[1],
+                threeMovies[2]
             ];
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key, _value) => null);
 
             // act
-            const result = movieUtils.update(updatedmovie);
+            const result = movieUtils.update(updatedMovie);
 
             // assert
-            const expected = { movieCollection: { nextId: 5, movies: threemoviesUpdated } };
+            const expected = { movieCollection: { nextId: 5, movies: threeMoviesUpdated } };
             expect(result).toEqual(expected);
             expect(setItemSpy).toHaveBeenCalledWith("movies", JSON.stringify(expected.movieCollection));
         });
         test("Check that updating an non-existing movie returns an error", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
+            const threeMovies = movieFixtures.threeMovies;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key, _value) => null);
 
-            const updatedmovie = {
+            const updatedMovie = {
                 id: 99,
                 name: "Fake Name",
                 description: "Fake Description"
             }
 
             // act
-            const result = movieUtils.update(updatedmovie);
+            const result = movieUtils.update(updatedMovie);
 
             // assert
             const expectedError = `movie with id 99 not found`
@@ -229,15 +229,15 @@ describe("movieUtils tests", () => {
         test("Check that deleting a movie by id works", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
-            const idToDelete = threemovies[1].id;
-            const threemoviesUpdated = [
-                threemovies[0],
-                threemovies[2]
+            const threeMovies = movieFixtures.threeMovies;
+            const idToDelete = threeMovies[1].id;
+            const threeMoviesUpdated = [
+                threeMovies[0],
+                threeMovies[2]
             ];
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key, _value) => null);
@@ -247,17 +247,17 @@ describe("movieUtils tests", () => {
 
             // assert
 
-            const expected = { movieCollection: { nextId: 5, movies: threemoviesUpdated } };
+            const expected = { movieCollection: { nextId: 5, movies: threeMoviesUpdated } };
             expect(result).toEqual(expected);
             expect(setItemSpy).toHaveBeenCalledWith("movies", JSON.stringify(expected.movieCollection));
         });
         test("Check that deleting a non-existing movie returns an error", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
+            const threeMovies = movieFixtures.threeMovies;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             const setItemSpy = jest.spyOn(Storage.prototype, 'setItem');
             setItemSpy.mockImplementation((_key, _value) => null);
@@ -273,10 +273,10 @@ describe("movieUtils tests", () => {
         test("Check that an error is returned when id not passed", () => {
 
             // arrange
-            const threemovies = movieFixtures.threemovies;
+            const threeMovies = movieFixtures.threeMovies;
 
             const getItemSpy = jest.spyOn(Storage.prototype, 'getItem');
-            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threemovies }));
+            getItemSpy.mockImplementation(createGetItemMock({ nextId: 5, movies: threeMovies }));
 
             // act
             const result = movieUtils.del();
