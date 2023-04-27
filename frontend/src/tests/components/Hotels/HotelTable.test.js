@@ -15,8 +15,8 @@ jest.mock('react-router-dom', () => ({
 describe("HotelTable tests", () => {
   const queryClient = new QueryClient();
 
-  const expectedHeaders = ["id", "Name", "Description"];
-  const expectedFields = ["id", "name", "description"];
+  const expectedHeaders = ["id", "Name", "Address", "Description"];
+  const expectedFields = ["id", "name", "address", "description"];
   const testId = "HotelTable";
 
   test("showCell function works properly", () => {
@@ -141,7 +141,7 @@ describe("HotelTable tests", () => {
     // assert - check that the console.log was called with the expected message
     expect(console.log).toHaveBeenCalled();
     const message = console.log.mock.calls[0][0];
-    const expectedMessage = `editCallback: {"id":2,"name":"Riviera Beach House","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
+    const expectedMessage = `editCallback: {"id":2,"name":"Riviera Beach House","address":"121 State St, Santa Barbara, CA 93101","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
     expect(message).toMatch(expectedMessage);
     restoreConsole();
   });
@@ -175,7 +175,7 @@ describe("HotelTable tests", () => {
     // assert - check that the console.log was called with the expected message
     expect(console.log).toHaveBeenCalled();
     const message = console.log.mock.calls[0][0];
-    const expectedMessage = `detailsCallback: {"id":2,"name":"Riviera Beach House","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
+    const expectedMessage = `detailsCallback: {"id":2,"name":"Riviera Beach House","address":"121 State St, Santa Barbara, CA 93101","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
     expect(message).toMatch(expectedMessage);
     restoreConsole();
   });
@@ -206,7 +206,7 @@ describe("HotelTable tests", () => {
      // assert - check that the console.log was called with the expected message
      await(waitFor(() => expect(console.log).toHaveBeenCalled()));
      const message = console.log.mock.calls[0][0];
-     const expectedMessage = `deleteCallback: {"id":2,"name":"Riviera Beach House","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
+     const expectedMessage = `deleteCallback: {"id":2,"name":"Riviera Beach House","address":"121 State St, Santa Barbara, CA 93101","description":"Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"})`;
      expect(message).toMatch(expectedMessage);
      restoreConsole();
   });

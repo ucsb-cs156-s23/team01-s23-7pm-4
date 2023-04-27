@@ -87,5 +87,3 @@ const hotelUtils = {
 };
 
 export { hotelUtils };
-
-
