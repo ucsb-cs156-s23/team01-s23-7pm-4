@@ -69,7 +69,7 @@ function GroceryForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.description?.message}
+                    {errors.price?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
@@ -85,7 +85,7 @@ function GroceryForm({ initialContents, submitAction, buttonLabel = "Create" }) 
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.name?.message}
+                    {errors.expiration?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
