@@ -1,5 +1,5 @@
 const movieFixtures = {
-    onemovie:
+    oneMovie:
     [
       {
        "id": 1,
@@ -9,7 +9,7 @@ const movieFixtures = {
       }
     ],
 
-    threemovies:
+    threeMovies:
     [
         {
             "id": 2,
