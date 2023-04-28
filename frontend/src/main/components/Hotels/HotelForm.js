@@ -58,34 +58,34 @@ function HotelForm({ initialContents, submitAction, buttonLabel = "Create" }) {
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="location">Location</Form.Label>
+                <Form.Label htmlFor="address">Address</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-location"}
-                    id="location"
+                    data-testid={testIdPrefix + "-address"}
+                    id="address"
                     type="text"
-                    isInvalid={Boolean(errors.location)}
-                    {...register("location", {
-                        required: "Location is required."
+                    isInvalid={Boolean(errors.address)}
+                    {...register("address", {
+                        required: "Address is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.location?.message}
+                    {errors.address?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" >
-                <Form.Label htmlFor="rating">Rating</Form.Label>
+                <Form.Label htmlFor="description">Description</Form.Label>
                 <Form.Control
-                    data-testid={testIdPrefix + "-rating"}
-                    id="rating"
+                    data-testid={testIdPrefix + "-description"}
+                    id="description"
                     type="text"
-                    isInvalid={Boolean(errors.rating)}
-                    {...register("rating", {
-                        required: "Rating is required."
+                    isInvalid={Boolean(errors.description)}
+                    {...register("description", {
+                        required: "Description is required."
                     })}
                 />
                 <Form.Control.Feedback type="invalid">
-                    {errors.rating?.message}
+                    {errors.description?.message}
                 </Form.Control.Feedback>
             </Form.Group>
 
