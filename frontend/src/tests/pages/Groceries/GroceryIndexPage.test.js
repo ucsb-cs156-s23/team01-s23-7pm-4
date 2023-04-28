@@ -65,6 +65,9 @@ describe("GroceryIndexPage tests", () => {
         const name = screen.getByText("Sandwich");
         expect(name).toBeInTheDocument();
 
+        const price = screen.getByText("5.99");
+        expect(price).toBeInTheDocument();
+
         const expiration = screen.getByText("04/28/23");
         expect(expiration).toBeInTheDocument();
 
@@ -87,6 +90,9 @@ describe("GroceryIndexPage tests", () => {
 
         const name = screen.getByText("Sandwich");
         expect(name).toBeInTheDocument();
+
+        const price = screen.getByText("5.99");
+        expect(price).toBeInTheDocument();
 
         const expiration = screen.getByText("04/28/23");
         expect(expiration).toBeInTheDocument();
