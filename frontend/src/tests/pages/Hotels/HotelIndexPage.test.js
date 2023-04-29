@@ -24,7 +24,7 @@ jest.mock('main/utils/hotelUtils', () => {
                     hotels: [
                         {
                             "id": 1,
-                            "name": "The Ritz-Carlton Bacara, Santa Barbara",
+                            "name": "The Ritz-Carlton",
                             "address": "8301 Hollister Ave, Santa Barbara, CA 93117",
                             "city": "Isla Vista",
                             "state": "CA",
@@ -65,7 +65,7 @@ describe("HotelIndexPage tests", () => {
         expect(createHotelButton).toBeInTheDocument();
         expect(createHotelButton).toHaveAttribute("style", "float: right;");
 
-        const name = screen.getByText("The Ritz-Carlton Bacara, Santa Barbara");
+        const name = screen.getByText("The Ritz-Carlton");
         expect(name).toBeInTheDocument();
 
         const address = screen.getByText("8301 Hollister Ave, Santa Barbara, CA 93117");
@@ -91,7 +91,7 @@ describe("HotelIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        const name = screen.getByText("The Ritz-Carlton Bacara, Santa Barbara");
+        const name = screen.getByText("The Ritz-Carlton");
         expect(name).toBeInTheDocument();
 
         const address = screen.getByText("8301 Hollister Ave, Santa Barbara, CA 93117");
@@ -114,7 +114,7 @@ describe("HotelIndexPage tests", () => {
         // assert - check that the console.log was called with the expected message
         expect(console.log).toHaveBeenCalled();
         const message = console.log.mock.calls[0][0];
-        const expectedMessage = `HotelIndexPage deleteCallback: {"id":1,"name":"The Ritz-Carlton Bacara, Santa Barbara","address":"8301 Hollister Ave, Santa Barbara, CA 93117","description":"a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."}`;
+        const expectedMessage = `HotelIndexPage deleteCallback: {"id":1,"name":"The Ritz-Carlton","address":"8301 Hollister Ave, Santa Barbara, CA 93117","description":"a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."}`;
         expect(message).toMatch(expectedMessage);
         restoreConsole();
 
