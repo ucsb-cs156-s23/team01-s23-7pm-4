@@ -23,13 +23,13 @@ jest.mock('main/utils/hotelUtils', () => {
                     nextId: 5,
                     hotels: [
                         {
-                            "id": 3,
-                            "name": "Ritz-Carlton",
-                            "address": "8301 Hollister Ave",
+                            "id": 1,
+                            "name": "The Ritz-Carlton Bacara, Santa Barbara",
+                            "address": "8301 Hollister Ave, Santa Barbara, CA 93117",
                             "city": "Isla Vista",
                             "state": "CA",
                             "zip": "93117",
-                            "description": "boujee hotel in Santa Barbara"
+                            "description": "a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."
                         },
                     ]
                 }
@@ -65,13 +65,13 @@ describe("HotelIndexPage tests", () => {
         expect(createHotelButton).toBeInTheDocument();
         expect(createHotelButton).toHaveAttribute("style", "float: right;");
 
-        const name = screen.getByText("Ritz-Carlton");
+        const name = screen.getByText("The Ritz-Carlton Bacara, Santa Barbara");
         expect(name).toBeInTheDocument();
 
-        const address = screen.getByText("8301 Hollister Ave");
+        const address = screen.getByText("8301 Hollister Ave, Santa Barbara, CA 93117");
         expect(address).toBeInTheDocument();
 
-        const description = screen.getByText("boujee hotel in Santa Barbara");
+        const description = screen.getByText("a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine.");
         expect(description).toBeInTheDocument();
 
         expect(screen.getByTestId("HotelTable-cell-row-0-col-Delete-button")).toBeInTheDocument();
@@ -91,13 +91,13 @@ describe("HotelIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        const name = screen.getByText("Ritz-Carlton");
+        const name = screen.getByText("The Ritz-Carlton Bacara, Santa Barbara");
         expect(name).toBeInTheDocument();
 
-        const address = screen.getByText("8301 Hollister Ave");
+        const address = screen.getByText("8301 Hollister Ave, Santa Barbara, CA 93117");
         expect(address).toBeInTheDocument();
 
-        const description = screen.getByText("boujee hotel in Santa Barbara");
+        const description = screen.getByText("a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine.");
         expect(description).toBeInTheDocument();
 
         const deleteButton = screen.getByTestId("HotelTable-cell-row-0-col-Delete-button");
@@ -106,7 +106,7 @@ describe("HotelIndexPage tests", () => {
         deleteButton.click();
 
         expect(mockDelete).toHaveBeenCalledTimes(1);
-        expect(mockDelete).toHaveBeenCalledWith(3);
+        expect(mockDelete).toHaveBeenCalledWith(1);
 
         await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/hotels"));
 
@@ -114,7 +114,7 @@ describe("HotelIndexPage tests", () => {
         // assert - check that the console.log was called with the expected message
         expect(console.log).toHaveBeenCalled();
         const message = console.log.mock.calls[0][0];
-        const expectedMessage = `HotelIndexPage deleteCallback: {"id":3,"name":"Ritz-Carlton","address":"8301 Hollister Ave","description":"boujee hotel in Santa Barbara"}`;
+        const expectedMessage = `HotelIndexPage deleteCallback: {"id":1,"name":"The Ritz-Carlton Bacara, Santa Barbara","address":"8301 Hollister Ave, Santa Barbara, CA 93117","description":"a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."}`;
         expect(message).toMatch(expectedMessage);
         restoreConsole();
 
