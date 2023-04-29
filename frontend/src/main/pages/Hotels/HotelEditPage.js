@@ -15,7 +15,7 @@ export default function HotelEditPage() {
     const onSubmit = async (hotel) => {
         const updatedHotel = hotelUtils.update(hotel);
         console.log("updatedHotel: " + JSON.stringify(updatedHotel));
-        navigate("/hotels");
+        navigate("/hotel");
     }  
 
     return (

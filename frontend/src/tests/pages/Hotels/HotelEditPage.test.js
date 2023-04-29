@@ -9,7 +9,7 @@ const mockNavigate = jest.fn();
 jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom'),
     useParams: () => ({
-        id: 1
+        id: 2
     }),
     useNavigate: () => mockNavigate
 }));
@@ -23,10 +23,10 @@ jest.mock('main/utils/hotelUtils', () => {
             getById: (_id) => {
                 return {
                     hotel: {
-                        id: 1,
-                        name: "The Ritz-Carlton Bacara, Santa Barbara",
-                        address: "8301 Hollister Ave, Santa Barbara, CA 93117",
-                        description: "a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine." 
+                        id: 2,
+                        name: "Riviera Beach House",
+                        address:"121 State St, Santa Barbara, CA 93101",
+                        description: "Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf"
                     }
                 }
             }
@@ -60,9 +60,9 @@ describe("HotelEditPage tests", () => {
         );
 
         expect(screen.getByTestId("HotelForm-name")).toBeInTheDocument();
-        expect(screen.getByDisplayValue('The Ritz-Carlton Bacara, Santa Barbara')).toBeInTheDocument();
-        expect(screen.getByDisplayValue('8301 Hollister Ave, Santa Barbara, CA 93117')).toBeInTheDocument();
-        expect(screen.getByDisplayValue('a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine.')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('Riviera Beach House')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('121 State St, Santa Barbara, CA 93101')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('Set in a trendy Funk Zone neighborhood, this chic adobe-style hotel with views of the Santa Ynez Mountains is a 4-minute walk from Stearns Wharf')).toBeInTheDocument();
     });
 
     test("redirects to /hotels on submit", async () => {
@@ -71,10 +71,10 @@ describe("HotelEditPage tests", () => {
 
         mockUpdate.mockReturnValue({
             "hotel": {
-                id: 1,
-                name: "The Ritz-Carlton Bacara, Santa Barbara",
-                address: "8301 Hollister Ave, Santa Barbara, CA 93117",
-                description: "a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."
+                id: 2,
+                name: "Best Western Plus South Coast Inn",
+                address: "5620 Calle Real, Goleta, CA 93117",
+                description: "Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport"
             }
         });
 
@@ -89,19 +89,19 @@ describe("HotelEditPage tests", () => {
         const nameInput = screen.getByLabelText("Name");
         expect(nameInput).toBeInTheDocument();
 
-        const priceInput = screen.getByLabelText("Address");
-        expect(priceInput).toBeInTheDocument();
+        const addressInput = screen.getByLabelText("Address");
+        expect(addressInput).toBeInTheDocument();
 
-        const expirationInput = screen.getByLabelText("Description");
-        expect(expirationInput).toBeInTheDocument();
+        const descriptionInput = screen.getByLabelText("Description");
+        expect(descriptionInput).toBeInTheDocument();
 
         const updateButton = screen.getByText("Update");
         expect(updateButton).toBeInTheDocument();
 
         await act(async () => {
-            fireEvent.change(nameInput, { target: { value: 'The Ritz-Carlton Bacara, Santa Barbara' } })
-            fireEvent.change(priceInput, { target: { value: '8301 Hollister Ave, Santa Barbara, CA 93117' } })
-            fireEvent.change(expirationInput, { target: { value: 'a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine.' } })
+            fireEvent.change(nameInput, { target: { value: 'Best Western Plus South Coast Inn' } })
+            fireEvent.change(addressInput, { target: { value: '5620 Calle Real, Goleta, CA 93117' } })
+            fireEvent.change(descriptionInput, { target: { value: 'Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport' } })
             fireEvent.click(updateButton);
         });
 
@@ -111,7 +111,7 @@ describe("HotelEditPage tests", () => {
         // assert - check that the console.log was called with the expected message
         expect(console.log).toHaveBeenCalled();
         const message = console.log.mock.calls[0][0];
-        const expectedMessage =  `updatedHotel: {"hotel":{"id":1,"name":"The Ritz-Carlton Bacara, Santa Barbara","address":"8301 Hollister Ave, Santa Barbara, CA 93117","description":"a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."}`
+        const expectedMessage =  `updatedHotel: {"hotel":{"id":2,"name":"Best Western Plus South Coast Inn","address":"5620 Calle Real, Goleta, CA 93117","description":"Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport"}`
 
         expect(message).toMatch(expectedMessage);
         restoreConsole();
