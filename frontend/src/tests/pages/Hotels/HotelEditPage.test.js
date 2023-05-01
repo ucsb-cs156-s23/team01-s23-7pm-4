@@ -72,7 +72,7 @@ describe("HotelEditPage tests", () => {
         mockUpdate.mockReturnValue({
             "hotel": {
                 id: 2,
-                name: "Best Western Plus South Coast Inn",
+                name: "Best Western Plus",
                 address: "5620 Calle Real, Goleta, CA 93117",
                 description: "Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport"
             }
@@ -99,7 +99,7 @@ describe("HotelEditPage tests", () => {
         expect(updateButton).toBeInTheDocument();
 
         await act(async () => {
-            fireEvent.change(nameInput, { target: { value: 'Best Western Plus South Coast Inn' } })
+            fireEvent.change(nameInput, { target: { value: 'Best Western Plus' } })
             fireEvent.change(addressInput, { target: { value: '5620 Calle Real, Goleta, CA 93117' } })
             fireEvent.change(descriptionInput, { target: { value: 'Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport' } })
             fireEvent.click(updateButton);
@@ -111,7 +111,7 @@ describe("HotelEditPage tests", () => {
         // assert - check that the console.log was called with the expected message
         expect(console.log).toHaveBeenCalled();
         const message = console.log.mock.calls[0][0];
-        const expectedMessage =  `updatedHotel: {"hotel":{"id":2,"name":"Best Western Plus South Coast Inn","address":"5620 Calle Real, Goleta, CA 93117","description":"Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport"}`
+        const expectedMessage =  `updatedHotel: {"hotel":{"id":2,"name":"Best Western Plus","address":"5620 Calle Real, Goleta, CA 93117","description":"Off Highway 101 and set in landscaped gardens, this down-to-earth hotel is 2.5 miles from Santa Barbara Airport"}`
 
         expect(message).toMatch(expectedMessage);
         restoreConsole();
@@ -119,5 +119,3 @@ describe("HotelEditPage tests", () => {
     });
 
 });
-
-

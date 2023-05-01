@@ -1,3 +1,4 @@
+
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import { useParams } from "react-router-dom";
 import { hotelUtils }  from 'main/utils/hotelUtils';
