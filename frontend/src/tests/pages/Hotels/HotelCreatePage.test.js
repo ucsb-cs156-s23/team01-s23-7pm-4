@@ -39,10 +39,10 @@ describe("HotelCreatePage tests", () => {
 
         mockAdd.mockReturnValue({
             "hotel": {
-                id: 3,
-                name: "Ritz-Carlton",
-                address: "8301 Hollister Ave",
-                description: "Boujee Hotel in Santa Barbara"
+                id: 1,
+                name: "The Ritz-Carlton",
+                address: "8301 Hollister Ave, Santa Barbara, CA 93117",
+                description: "a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."
             }
         });
 
@@ -69,9 +69,9 @@ describe("HotelCreatePage tests", () => {
         expect(createButton).toBeInTheDocument();
 
         await act(async () => {
-            fireEvent.change(nameInput, { target: { value: 'Ritz-Carlton' } })
-            fireEvent.change(addressInput, { target: { value: '8301 Hollister Ave' } })
-            fireEvent.change(descriptionInput, { target: { value: 'Boujee Hotel in Santa Barbara' } })
+            fireEvent.change(nameInput, { target: { value: 'The Ritz-Carlton' } })
+            fireEvent.change(addressInput, { target: { value: '8301 Hollister Ave, Santa Barbara, CA 93117' } })
+            fireEvent.change(descriptionInput, { target: { value: 'a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine.' } })
             fireEvent.click(createButton);
         });
 
@@ -81,7 +81,7 @@ describe("HotelCreatePage tests", () => {
         // assert - check that the console.log was called with the expected message
         expect(console.log).toHaveBeenCalled();
         const message = console.log.mock.calls[0][0];
-        const expectedMessage =  `createdHotel: {"hotel":{"id":3,"name":"Ritz-Carlton","address":"8301 Hollister Ave","description":"Boujee Hotel in Santa Barbara"}`
+        const expectedMessage =  `createdHotel: {"hotel":{"id":1,"name":"The Ritz-Carlton","address":"8301 Hollister Ave, Santa Barbara, CA 93117","description":"a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."}`
 
         expect(message).toMatch(expectedMessage);
         restoreConsole();
@@ -89,5 +89,3 @@ describe("HotelCreatePage tests", () => {
     });
 
 });
-
-

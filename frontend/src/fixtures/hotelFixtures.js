@@ -3,7 +3,7 @@ const hotelFixtures = {
     [
       {
        "id": 1,
-        "name": "The Ritz-Carlton Bacara, Santa Barbara",
+        "name": "The Ritz-Carlton",
         "address": "8301 Hollister Ave, Santa Barbara, CA 93117",
         "description": "a luxury resort in Santa Barbara set on 78 acres with two natural beaches, a holistic spa and seasonal cuisine."      
       }
